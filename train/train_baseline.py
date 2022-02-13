@@ -17,7 +17,7 @@ from torch.autograd import Variable
 
 sys.path.append(r"..\auxiliary")
 
-from model_baseline import net_classifier, squeezenet1_1
+from model_baseline import CreateNet, squeezenet1_1
 from dataset import *
 from Utils import *
 
@@ -43,9 +43,8 @@ parser.add_argument('--workers', type=int, help='number of data loading workers'
 parser.add_argument('--lrate', type=float, default=0.0003, help='learning rate')
 parser.add_argument('--pth_path', type=str, default='')
 parser.add_argument('--foldnum', type=int, default=0, help='fold number')
-parser.add_argument('--model_name',type=str,default='classify',help='name of the model to be train')
+parser.add_argument('--model_name',type=str,default='baseline',help='name of the model to be train')
 parser.add_argument('--cudanum',type=str,default='0',help='cuda number')
-parser.add_argument('--num_classes', type=int, default=1000, help='number of classes')
 
 opt = parser.parse_args()
 print(opt)
@@ -72,7 +71,6 @@ writer=SummaryWriter(log_path)
 
 train_loss = AverageMeter()
 val_loss = AverageMeter()
-val_degree_loss = AverageMeter()
 # load data
 dataset_train = ColorChecker(train=True, folds_num=opt.foldnum)
 dataloader_train = torch.utils.data.DataLoader(dataset_train, batch_size=opt.batch_size, shuffle=True,
@@ -88,7 +86,7 @@ print('training fold %d' % opt.foldnum)
 
 # create network
 SqueezeNet = squeezenet1_1(pretrained=True)
-network = net_classifier(SqueezeNet,num_classes=opt.num_classes)
+network = CreateNet(SqueezeNet)
 network.to(device)
 # network = nn.DataParallel(network).to(device)
 
@@ -116,20 +114,11 @@ for epoch in range(opt.nepoch):
     for i, data in enumerate(dataloader_train):
         optimizer.zero_grad()
         img, label, fn = data
-        img = img.to(device)
-        label = torch.nn.functional.normalize(label,dim=1)
-        label = label.to(device)
-        label = label*999
-
-        label_class = torch.zeros(label.shape[0], label.shape[1], opt.num_classes)
-        for color in range(3):
-            for b in range(label.shape[0]):
-                label_class[b,color,int(torch.round(label[b,color]))]=1
-        r,g,b = network(img)
-        r = softmax(r)
-        g = softmax(g)
-        b = softmax(b)
-        loss = criterion(r,label_class[:,0,:])+criterion(g,label_class[:,1,:])+criterion(b,label_class[:,2,:])
+        img = img.cuda()
+        label = label.cuda()
+        pred = network(img)
+        pred_ill = torch.nn.functional.normalize(torch.sum(torch.sum(pred, 2), 2), dim=1)
+        loss = get_angular_loss(pred_ill, label)
         loss.backward()
         train_loss.update(loss.item())
         optimizer.step()
@@ -140,46 +129,32 @@ for epoch in range(opt.nepoch):
         # val mode
     time_use2 = 0
     val_loss.reset()
-    val_degree_loss.reset()
     with torch.no_grad():
         if epoch % 5 == 0:
             val_loss.reset()
-            val_degree_loss.reset()
             network.eval()
             start = time.time()
             errors = []
             for i, data in enumerate(dataloader_test):
                 img, label, fn = data
-                img = img.to(device)
-                label = label.to(device)
-                label = torch.nn.functional.normalize(label, dim=1)
-                label = label * 1000
-                label_class = torch.zeros(label.shape[0], label.shape[1], opt.num_classes)
-                for color in range(3):
-                    for b in range(label.shape[0]):
-                        label_class[b, color, int(torch.round(label[b, color]))] = 1
-                r, g, b = network(img)
-                r = softmax(r)
-                g = softmax(g)
-                b = softmax(b)
-                loss = criterion(r, label_class[:, 0, :]) + criterion(g, label_class[:, 1, :]) + \
-                       criterion(b,label_class[:, 2, :])
-                loss_degree =  cal_degree_loss(label,r,g,b)
+                img = img.cuda()
+                label = label.cuda()
+                pred = network(img)
+                pred_ill = torch.nn.functional.normalize(torch.sum(torch.sum(pred, 2), 2), dim=1)
+                loss = get_angular_loss(pred_ill, label)
                 val_loss.update(loss.item())
-                val_degree_loss.update(loss_degree.item())
-                errors.append(loss_degree.item())
+                errors.append(loss.item())
             time_use2 = time.time() - start
             writer.add_scalar('loss/val_loss', val_loss.avg, epoch)
-            writer.add_scalar('loss/val_degree_loss', val_degree_loss.avg, epoch)
 
     mean, median, trimean, bst25, wst25, pct95 = evaluate(errors)
     try:
-        print('Epoch: %d,  Train_loss: %f,  Val_loss: %f, Val_degree_loss:%f, T_Time: %f, V_time: %f' % (
-        epoch, train_loss.avg, val_loss.avg,val_degree_loss.avg, time_use1, time_use2))
+        print('Epoch: %d,  Train_loss: %f,  Val_loss: %f: T_Time: %f, V_time: %f' % (
+        epoch, train_loss.avg, val_loss.avg, time_use1, time_use2))
     except:
         print('IOError...')
-    if (val_degree_loss.avg > 0 and val_degree_loss.avg < best_val_loss):
-        best_val_loss = val_degree_loss.avg
+    if (val_loss.avg > 0 and val_loss.avg < best_val_loss):
+        best_val_loss = val_loss.avg
         best_mean = mean
         best_median = median
         best_trimean = trimean
@@ -190,7 +165,6 @@ for epoch in range(opt.nepoch):
     log_table = {
         "train_loss": train_loss.avg,
         "val_loss": val_loss.avg,
-        'val_degree_loss':val_degree_loss.avg,
         "epoch": epoch,
         "lr": lrate,
         "best_val_loss": best_val_loss,

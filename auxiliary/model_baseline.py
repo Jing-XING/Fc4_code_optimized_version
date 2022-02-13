@@ -124,42 +124,25 @@ def squeezenet1_1(pretrained=False, **kwargs):
     return model
 
 
-class net_classifier(nn.Module):
-    def __init__(self, model,num_classes=1000):
-        super(net_classifier, self).__init__()
-        self.num_classes = num_classes
+class CreateNet(nn.Module):
+    def __init__(self, model):
+        super(CreateNet, self).__init__()
         self.squeezenet1_1 = nn.Sequential(*list(model.children())[0][:12])
+        self.fc = nn.Sequential(
+            nn.MaxPool2d(kernel_size=3, stride=2, ceil_mode=True),
+            nn.Conv2d(512, 64, kernel_size=6, stride=1, padding=3),
+            nn.ReLU(inplace=True),
+            nn.Dropout(p=0.5),
+            nn.Conv2d(64, 3, kernel_size=1, stride=1),
+            nn.ReLU(inplace=True)
+        )
 
-        final_conv = nn.Conv2d(512, self.num_classes, kernel_size=1)
-        self.classifierR = nn.Sequential(
-            nn.Dropout(p=0.5),
-            final_conv,
-            nn.ReLU(inplace=True),
-            nn.AdaptiveAvgPool2d((1, 1))
-        )
-        self.classifierG = nn.Sequential(
-            nn.Dropout(p=0.5),
-            final_conv,
-            nn.ReLU(inplace=True),
-            nn.AdaptiveAvgPool2d((1, 1))
-        )
-        self.classifierB = nn.Sequential(
-            nn.Dropout(p=0.5),
-            final_conv,
-            nn.ReLU(inplace=True),
-            nn.AdaptiveAvgPool2d((1, 1))
-        )
 
     def forward(self, x):
         x = self.squeezenet1_1(x)
-        x1 = self.classifierR(x)
-        x2 = self.classifierG(x)
-        x3 = self.classifierB(x)
-        x1 = x1.view(x1.size(0), self.num_classes)
-        x2 = x2.view(x2.size(0), self.num_classes)
-        x3 = x3.view(x3.size(0), self.num_classes)
+        x = self.fc(x)
+        return x
 
-        return x1, x2, x3
 
 
 if __name__ == '__main__':
