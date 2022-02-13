@@ -71,3 +71,305 @@ CreateNet(
     (5): ReLU(inplace=True)
   )
 )
+CreateNet(
+  (squeezenet1_1): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(3, 3), stride=(2, 2))
+    (1): ReLU(inplace=True)
+    (2): MaxPool2d(kernel_size=3, stride=2, padding=0, dilation=1, ceil_mode=True)
+    (3): Fire(
+      (squeeze): Conv2d(64, 16, kernel_size=(1, 1), stride=(1, 1))
+      (squeeze_activation): ReLU(inplace=True)
+      (expand1x1): Conv2d(16, 64, kernel_size=(1, 1), stride=(1, 1))
+      (expand1x1_activation): ReLU(inplace=True)
+      (expand3x3): Conv2d(16, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (expand3x3_activation): ReLU(inplace=True)
+    )
+    (4): Fire(
+      (squeeze): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+      (squeeze_activation): ReLU(inplace=True)
+      (expand1x1): Conv2d(16, 64, kernel_size=(1, 1), stride=(1, 1))
+      (expand1x1_activation): ReLU(inplace=True)
+      (expand3x3): Conv2d(16, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (expand3x3_activation): ReLU(inplace=True)
+    )
+    (5): MaxPool2d(kernel_size=3, stride=2, padding=0, dilation=1, ceil_mode=True)
+    (6): Fire(
+      (squeeze): Conv2d(128, 32, kernel_size=(1, 1), stride=(1, 1))
+      (squeeze_activation): ReLU(inplace=True)
+      (expand1x1): Conv2d(32, 128, kernel_size=(1, 1), stride=(1, 1))
+      (expand1x1_activation): ReLU(inplace=True)
+      (expand3x3): Conv2d(32, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (expand3x3_activation): ReLU(inplace=True)
+    )
+    (7): Fire(
+      (squeeze): Conv2d(256, 32, kernel_size=(1, 1), stride=(1, 1))
+      (squeeze_activation): ReLU(inplace=True)
+      (expand1x1): Conv2d(32, 128, kernel_size=(1, 1), stride=(1, 1))
+      (expand1x1_activation): ReLU(inplace=True)
+      (expand3x3): Conv2d(32, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (expand3x3_activation): ReLU(inplace=True)
+    )
+    (8): MaxPool2d(kernel_size=3, stride=2, padding=0, dilation=1, ceil_mode=True)
+    (9): Fire(
+      (squeeze): Conv2d(256, 48, kernel_size=(1, 1), stride=(1, 1))
+      (squeeze_activation): ReLU(inplace=True)
+      (expand1x1): Conv2d(48, 192, kernel_size=(1, 1), stride=(1, 1))
+      (expand1x1_activation): ReLU(inplace=True)
+      (expand3x3): Conv2d(48, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (expand3x3_activation): ReLU(inplace=True)
+    )
+    (10): Fire(
+      (squeeze): Conv2d(384, 48, kernel_size=(1, 1), stride=(1, 1))
+      (squeeze_activation): ReLU(inplace=True)
+      (expand1x1): Conv2d(48, 192, kernel_size=(1, 1), stride=(1, 1))
+      (expand1x1_activation): ReLU(inplace=True)
+      (expand3x3): Conv2d(48, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (expand3x3_activation): ReLU(inplace=True)
+    )
+    (11): Fire(
+      (squeeze): Conv2d(384, 64, kernel_size=(1, 1), stride=(1, 1))
+      (squeeze_activation): ReLU(inplace=True)
+      (expand1x1): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1))
+      (expand1x1_activation): ReLU(inplace=True)
+      (expand3x3): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (expand3x3_activation): ReLU(inplace=True)
+    )
+  )
+  (fc): Sequential(
+    (0): MaxPool2d(kernel_size=3, stride=2, padding=0, dilation=1, ceil_mode=True)
+    (1): Conv2d(512, 64, kernel_size=(6, 6), stride=(1, 1), padding=(3, 3))
+    (2): ReLU(inplace=True)
+    (3): Dropout(p=0.5, inplace=False)
+    (4): Conv2d(64, 3, kernel_size=(1, 1), stride=(1, 1))
+    (5): ReLU(inplace=True)
+  )
+)
+CreateNet(
+  (squeezenet1_1): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(3, 3), stride=(2, 2))
+    (1): ReLU(inplace=True)
+    (2): MaxPool2d(kernel_size=3, stride=2, padding=0, dilation=1, ceil_mode=True)
+    (3): Fire(
+      (squeeze): Conv2d(64, 16, kernel_size=(1, 1), stride=(1, 1))
+      (squeeze_activation): ReLU(inplace=True)
+      (expand1x1): Conv2d(16, 64, kernel_size=(1, 1), stride=(1, 1))
+      (expand1x1_activation): ReLU(inplace=True)
+      (expand3x3): Conv2d(16, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (expand3x3_activation): ReLU(inplace=True)
+    )
+    (4): Fire(
+      (squeeze): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+      (squeeze_activation): ReLU(inplace=True)
+      (expand1x1): Conv2d(16, 64, kernel_size=(1, 1), stride=(1, 1))
+      (expand1x1_activation): ReLU(inplace=True)
+      (expand3x3): Conv2d(16, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (expand3x3_activation): ReLU(inplace=True)
+    )
+    (5): MaxPool2d(kernel_size=3, stride=2, padding=0, dilation=1, ceil_mode=True)
+    (6): Fire(
+      (squeeze): Conv2d(128, 32, kernel_size=(1, 1), stride=(1, 1))
+      (squeeze_activation): ReLU(inplace=True)
+      (expand1x1): Conv2d(32, 128, kernel_size=(1, 1), stride=(1, 1))
+      (expand1x1_activation): ReLU(inplace=True)
+      (expand3x3): Conv2d(32, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (expand3x3_activation): ReLU(inplace=True)
+    )
+    (7): Fire(
+      (squeeze): Conv2d(256, 32, kernel_size=(1, 1), stride=(1, 1))
+      (squeeze_activation): ReLU(inplace=True)
+      (expand1x1): Conv2d(32, 128, kernel_size=(1, 1), stride=(1, 1))
+      (expand1x1_activation): ReLU(inplace=True)
+      (expand3x3): Conv2d(32, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (expand3x3_activation): ReLU(inplace=True)
+    )
+    (8): MaxPool2d(kernel_size=3, stride=2, padding=0, dilation=1, ceil_mode=True)
+    (9): Fire(
+      (squeeze): Conv2d(256, 48, kernel_size=(1, 1), stride=(1, 1))
+      (squeeze_activation): ReLU(inplace=True)
+      (expand1x1): Conv2d(48, 192, kernel_size=(1, 1), stride=(1, 1))
+      (expand1x1_activation): ReLU(inplace=True)
+      (expand3x3): Conv2d(48, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (expand3x3_activation): ReLU(inplace=True)
+    )
+    (10): Fire(
+      (squeeze): Conv2d(384, 48, kernel_size=(1, 1), stride=(1, 1))
+      (squeeze_activation): ReLU(inplace=True)
+      (expand1x1): Conv2d(48, 192, kernel_size=(1, 1), stride=(1, 1))
+      (expand1x1_activation): ReLU(inplace=True)
+      (expand3x3): Conv2d(48, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (expand3x3_activation): ReLU(inplace=True)
+    )
+    (11): Fire(
+      (squeeze): Conv2d(384, 64, kernel_size=(1, 1), stride=(1, 1))
+      (squeeze_activation): ReLU(inplace=True)
+      (expand1x1): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1))
+      (expand1x1_activation): ReLU(inplace=True)
+      (expand3x3): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (expand3x3_activation): ReLU(inplace=True)
+    )
+  )
+  (fc): Sequential(
+    (0): MaxPool2d(kernel_size=3, stride=2, padding=0, dilation=1, ceil_mode=True)
+    (1): Conv2d(512, 64, kernel_size=(6, 6), stride=(1, 1), padding=(3, 3))
+    (2): ReLU(inplace=True)
+    (3): Dropout(p=0.5, inplace=False)
+    (4): Conv2d(64, 3, kernel_size=(1, 1), stride=(1, 1))
+    (5): ReLU(inplace=True)
+  )
+)
+json_stats: {"train_loss": 34.154823780059814, "val_loss": 26.7536330248313, "epoch": 0, "lr": 0.0003, "best_val_loss": 26.7536330248313, "mean": 26.7536330248313, "median": 22.58275604248047, "trimean": 24.424437046051025, "bst25": 21.182083698029214, "wst25": 38.18964616457621, "pct95": 39.28944854736328}
+json_stats: {"train_loss": 27.596008777618408, "val_loss": 0, "epoch": 1, "lr": 0.0003, "best_val_loss": 26.7536330248313, "mean": 26.7536330248313, "median": 22.58275604248047, "trimean": 24.424437046051025, "bst25": 21.182083698029214, "wst25": 38.18964616457621, "pct95": 39.28944854736328}
+json_stats: {"train_loss": 25.187286535898846, "val_loss": 0, "epoch": 2, "lr": 0.0003, "best_val_loss": 26.7536330248313, "mean": 26.7536330248313, "median": 22.58275604248047, "trimean": 24.424437046051025, "bst25": 21.182083698029214, "wst25": 38.18964616457621, "pct95": 39.28944854736328}
+json_stats: {"train_loss": 13.942205349604288, "val_loss": 0, "epoch": 3, "lr": 0.0003, "best_val_loss": 26.7536330248313, "mean": 26.7536330248313, "median": 22.58275604248047, "trimean": 24.424437046051025, "bst25": 21.182083698029214, "wst25": 38.18964616457621, "pct95": 39.28944854736328}
+json_stats: {"train_loss": 12.704421758651733, "val_loss": 0, "epoch": 4, "lr": 0.0003, "best_val_loss": 26.7536330248313, "mean": 26.7536330248313, "median": 22.58275604248047, "trimean": 24.424437046051025, "bst25": 21.182083698029214, "wst25": 38.18964616457621, "pct95": 39.28944854736328}
+CreateNet(
+  (squeezenet1_1): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(3, 3), stride=(2, 2))
+    (1): ReLU(inplace=True)
+    (2): MaxPool2d(kernel_size=3, stride=2, padding=0, dilation=1, ceil_mode=True)
+    (3): Fire(
+      (squeeze): Conv2d(64, 16, kernel_size=(1, 1), stride=(1, 1))
+      (squeeze_activation): ReLU(inplace=True)
+      (expand1x1): Conv2d(16, 64, kernel_size=(1, 1), stride=(1, 1))
+      (expand1x1_activation): ReLU(inplace=True)
+      (expand3x3): Conv2d(16, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (expand3x3_activation): ReLU(inplace=True)
+    )
+    (4): Fire(
+      (squeeze): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+      (squeeze_activation): ReLU(inplace=True)
+      (expand1x1): Conv2d(16, 64, kernel_size=(1, 1), stride=(1, 1))
+      (expand1x1_activation): ReLU(inplace=True)
+      (expand3x3): Conv2d(16, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (expand3x3_activation): ReLU(inplace=True)
+    )
+    (5): MaxPool2d(kernel_size=3, stride=2, padding=0, dilation=1, ceil_mode=True)
+    (6): Fire(
+      (squeeze): Conv2d(128, 32, kernel_size=(1, 1), stride=(1, 1))
+      (squeeze_activation): ReLU(inplace=True)
+      (expand1x1): Conv2d(32, 128, kernel_size=(1, 1), stride=(1, 1))
+      (expand1x1_activation): ReLU(inplace=True)
+      (expand3x3): Conv2d(32, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (expand3x3_activation): ReLU(inplace=True)
+    )
+    (7): Fire(
+      (squeeze): Conv2d(256, 32, kernel_size=(1, 1), stride=(1, 1))
+      (squeeze_activation): ReLU(inplace=True)
+      (expand1x1): Conv2d(32, 128, kernel_size=(1, 1), stride=(1, 1))
+      (expand1x1_activation): ReLU(inplace=True)
+      (expand3x3): Conv2d(32, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (expand3x3_activation): ReLU(inplace=True)
+    )
+    (8): MaxPool2d(kernel_size=3, stride=2, padding=0, dilation=1, ceil_mode=True)
+    (9): Fire(
+      (squeeze): Conv2d(256, 48, kernel_size=(1, 1), stride=(1, 1))
+      (squeeze_activation): ReLU(inplace=True)
+      (expand1x1): Conv2d(48, 192, kernel_size=(1, 1), stride=(1, 1))
+      (expand1x1_activation): ReLU(inplace=True)
+      (expand3x3): Conv2d(48, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (expand3x3_activation): ReLU(inplace=True)
+    )
+    (10): Fire(
+      (squeeze): Conv2d(384, 48, kernel_size=(1, 1), stride=(1, 1))
+      (squeeze_activation): ReLU(inplace=True)
+      (expand1x1): Conv2d(48, 192, kernel_size=(1, 1), stride=(1, 1))
+      (expand1x1_activation): ReLU(inplace=True)
+      (expand3x3): Conv2d(48, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (expand3x3_activation): ReLU(inplace=True)
+    )
+    (11): Fire(
+      (squeeze): Conv2d(384, 64, kernel_size=(1, 1), stride=(1, 1))
+      (squeeze_activation): ReLU(inplace=True)
+      (expand1x1): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1))
+      (expand1x1_activation): ReLU(inplace=True)
+      (expand3x3): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (expand3x3_activation): ReLU(inplace=True)
+    )
+  )
+  (fc): Sequential(
+    (0): MaxPool2d(kernel_size=3, stride=2, padding=0, dilation=1, ceil_mode=True)
+    (1): Conv2d(512, 64, kernel_size=(6, 6), stride=(1, 1), padding=(3, 3))
+    (2): ReLU(inplace=True)
+    (3): Dropout(p=0.5, inplace=False)
+    (4): Conv2d(64, 3, kernel_size=(1, 1), stride=(1, 1))
+    (5): ReLU(inplace=True)
+  )
+)
+json_stats: {"train_loss": 29.832051118214924, "val_loss": 23.951789205036466, "epoch": 0, "lr": 0.0003, "best_val_loss": 23.951789205036466, "mean": 23.951789205036466, "median": 19.369495391845703, "trimean": 21.435141563415527, "bst25": 17.058033983758154, "wst25": 37.43225824832916, "pct95": 39.100485992431636}
+json_stats: {"train_loss": 15.718606233596802, "val_loss": 0, "epoch": 1, "lr": 0.0003, "best_val_loss": 23.951789205036466, "mean": 23.951789205036466, "median": 19.369495391845703, "trimean": 21.435141563415527, "bst25": 17.058033983758154, "wst25": 37.43225824832916, "pct95": 39.100485992431636}
+json_stats: {"train_loss": 13.153943061828613, "val_loss": 0, "epoch": 2, "lr": 0.0003, "best_val_loss": 23.951789205036466, "mean": 23.951789205036466, "median": 19.369495391845703, "trimean": 21.435141563415527, "bst25": 17.058033983758154, "wst25": 37.43225824832916, "pct95": 39.100485992431636}
+json_stats: {"train_loss": 12.757382154464722, "val_loss": 0, "epoch": 3, "lr": 0.0003, "best_val_loss": 23.951789205036466, "mean": 23.951789205036466, "median": 19.369495391845703, "trimean": 21.435141563415527, "bst25": 17.058033983758154, "wst25": 37.43225824832916, "pct95": 39.100485992431636}
+json_stats: {"train_loss": 12.169030030568441, "val_loss": 0, "epoch": 4, "lr": 0.0003, "best_val_loss": 23.951789205036466, "mean": 23.951789205036466, "median": 19.369495391845703, "trimean": 21.435141563415527, "bst25": 17.058033983758154, "wst25": 37.43225824832916, "pct95": 39.100485992431636}
+json_stats: {"train_loss": 11.738929271697998, "val_loss": 8.071367734481418, "epoch": 5, "lr": 0.0003, "best_val_loss": 8.071367734481418, "mean": 8.071367734481418, "median": 5.764358043670654, "trimean": 6.697841167449951, "bst25": 2.4894288201281367, "wst25": 18.007141788800556, "pct95": 19.554378509521484}
+json_stats: {"train_loss": 12.188083330790201, "val_loss": 0, "epoch": 6, "lr": 0.0003, "best_val_loss": 8.071367734481418, "mean": 8.071367734481418, "median": 5.764358043670654, "trimean": 6.697841167449951, "bst25": 2.4894288201281367, "wst25": 18.007141788800556, "pct95": 19.554378509521484}
+json_stats: {"train_loss": 12.567020972569784, "val_loss": 0, "epoch": 7, "lr": 0.0003, "best_val_loss": 8.071367734481418, "mean": 8.071367734481418, "median": 5.764358043670654, "trimean": 6.697841167449951, "bst25": 2.4894288201281367, "wst25": 18.007141788800556, "pct95": 19.554378509521484}
+json_stats: {"train_loss": 12.1555126508077, "val_loss": 0, "epoch": 8, "lr": 0.0003, "best_val_loss": 8.071367734481418, "mean": 8.071367734481418, "median": 5.764358043670654, "trimean": 6.697841167449951, "bst25": 2.4894288201281367, "wst25": 18.007141788800556, "pct95": 19.554378509521484}
+json_stats: {"train_loss": 11.9374631245931, "val_loss": 0, "epoch": 9, "lr": 0.0003, "best_val_loss": 8.071367734481418, "mean": 8.071367734481418, "median": 5.764358043670654, "trimean": 6.697841167449951, "bst25": 2.4894288201281367, "wst25": 18.007141788800556, "pct95": 19.554378509521484}
+json_stats: {"train_loss": 11.787216901779175, "val_loss": 7.857845973243158, "epoch": 10, "lr": 0.0003, "best_val_loss": 7.857845973243158, "mean": 7.857845973243158, "median": 5.030222415924072, "trimean": 6.346546471118927, "bst25": 2.138489163302361, "wst25": 18.4466335773468, "pct95": 20.18899574279785}
+json_stats: {"train_loss": 11.80499784151713, "val_loss": 0, "epoch": 11, "lr": 0.0003, "best_val_loss": 7.857845973243158, "mean": 7.857845973243158, "median": 5.030222415924072, "trimean": 6.346546471118927, "bst25": 2.138489163302361, "wst25": 18.4466335773468, "pct95": 20.18899574279785}
+json_stats: {"train_loss": 12.120956261952719, "val_loss": 0, "epoch": 12, "lr": 0.0003, "best_val_loss": 7.857845973243158, "mean": 7.857845973243158, "median": 5.030222415924072, "trimean": 6.346546471118927, "bst25": 2.138489163302361, "wst25": 18.4466335773468, "pct95": 20.18899574279785}
+json_stats: {"train_loss": 11.573075294494629, "val_loss": 0, "epoch": 13, "lr": 0.0003, "best_val_loss": 7.857845973243158, "mean": 7.857845973243158, "median": 5.030222415924072, "trimean": 6.346546471118927, "bst25": 2.138489163302361, "wst25": 18.4466335773468, "pct95": 20.18899574279785}
+json_stats: {"train_loss": 11.065948247909546, "val_loss": 0, "epoch": 14, "lr": 0.0003, "best_val_loss": 7.857845973243158, "mean": 7.857845973243158, "median": 5.030222415924072, "trimean": 6.346546471118927, "bst25": 2.138489163302361, "wst25": 18.4466335773468, "pct95": 20.18899574279785}
+json_stats: {"train_loss": 10.558944384256998, "val_loss": 4.944045584037821, "epoch": 15, "lr": 0.0003, "best_val_loss": 4.944045584037821, "mean": 4.944045584037821, "median": 3.560460090637207, "trimean": 3.9286938905715942, "bst25": 1.5127127576381603, "wst25": 10.367153922716776, "pct95": 12.10847873687744}
+json_stats: {"train_loss": 10.400642315546671, "val_loss": 0, "epoch": 16, "lr": 0.0003, "best_val_loss": 4.944045584037821, "mean": 4.944045584037821, "median": 3.560460090637207, "trimean": 3.9286938905715942, "bst25": 1.5127127576381603, "wst25": 10.367153922716776, "pct95": 12.10847873687744}
+json_stats: {"train_loss": 10.462010701497396, "val_loss": 0, "epoch": 17, "lr": 0.0003, "best_val_loss": 4.944045584037821, "mean": 4.944045584037821, "median": 3.560460090637207, "trimean": 3.9286938905715942, "bst25": 1.5127127576381603, "wst25": 10.367153922716776, "pct95": 12.10847873687744}
+json_stats: {"train_loss": 10.117064555486044, "val_loss": 0, "epoch": 18, "lr": 0.0003, "best_val_loss": 4.944045584037821, "mean": 4.944045584037821, "median": 3.560460090637207, "trimean": 3.9286938905715942, "bst25": 1.5127127576381603, "wst25": 10.367153922716776, "pct95": 12.10847873687744}
+json_stats: {"train_loss": 9.650272289911905, "val_loss": 0, "epoch": 19, "lr": 0.0003, "best_val_loss": 4.944045584037821, "mean": 4.944045584037821, "median": 3.560460090637207, "trimean": 3.9286938905715942, "bst25": 1.5127127576381603, "wst25": 10.367153922716776, "pct95": 12.10847873687744}
+json_stats: {"train_loss": 9.268387595812479, "val_loss": 3.9949751592502394, "epoch": 20, "lr": 0.0003, "best_val_loss": 3.9949751592502394, "mean": 3.9949751592502394, "median": 3.521477699279785, "trimean": 3.5724314749240875, "bst25": 1.0890108594234953, "wst25": 7.7436307569344835, "pct95": 9.037593078613279}
+json_stats: {"train_loss": 9.25423812866211, "val_loss": 0, "epoch": 21, "lr": 0.0003, "best_val_loss": 3.9949751592502394, "mean": 3.9949751592502394, "median": 3.521477699279785, "trimean": 3.5724314749240875, "bst25": 1.0890108594234953, "wst25": 7.7436307569344835, "pct95": 9.037593078613279}
+json_stats: {"train_loss": 9.108129580815634, "val_loss": 0, "epoch": 22, "lr": 0.0003, "best_val_loss": 3.9949751592502394, "mean": 3.9949751592502394, "median": 3.521477699279785, "trimean": 3.5724314749240875, "bst25": 1.0890108594234953, "wst25": 7.7436307569344835, "pct95": 9.037593078613279}
+json_stats: {"train_loss": 9.310770710309347, "val_loss": 0, "epoch": 23, "lr": 0.0003, "best_val_loss": 3.9949751592502394, "mean": 3.9949751592502394, "median": 3.521477699279785, "trimean": 3.5724314749240875, "bst25": 1.0890108594234953, "wst25": 7.7436307569344835, "pct95": 9.037593078613279}
+json_stats: {"train_loss": 8.42268168926239, "val_loss": 0, "epoch": 24, "lr": 0.0003, "best_val_loss": 3.9949751592502394, "mean": 3.9949751592502394, "median": 3.521477699279785, "trimean": 3.5724314749240875, "bst25": 1.0890108594234953, "wst25": 7.7436307569344835, "pct95": 9.037593078613279}
+json_stats: {"train_loss": 9.027353326479593, "val_loss": 4.983660814938722, "epoch": 25, "lr": 0.0003, "best_val_loss": 3.9949751592502394, "mean": 3.9949751592502394, "median": 3.521477699279785, "trimean": 3.5724314749240875, "bst25": 1.0890108594234953, "wst25": 7.7436307569344835, "pct95": 9.037593078613279}
+json_stats: {"train_loss": 8.471333424250284, "val_loss": 0, "epoch": 26, "lr": 0.0003, "best_val_loss": 3.9949751592502394, "mean": 3.9949751592502394, "median": 3.521477699279785, "trimean": 3.5724314749240875, "bst25": 1.0890108594234953, "wst25": 7.7436307569344835, "pct95": 9.037593078613279}
+json_stats: {"train_loss": 7.985541303952535, "val_loss": 0, "epoch": 27, "lr": 0.0003, "best_val_loss": 3.9949751592502394, "mean": 3.9949751592502394, "median": 3.521477699279785, "trimean": 3.5724314749240875, "bst25": 1.0890108594234953, "wst25": 7.7436307569344835, "pct95": 9.037593078613279}
+json_stats: {"train_loss": 7.762380679448445, "val_loss": 0, "epoch": 28, "lr": 0.0003, "best_val_loss": 3.9949751592502394, "mean": 3.9949751592502394, "median": 3.521477699279785, "trimean": 3.5724314749240875, "bst25": 1.0890108594234953, "wst25": 7.7436307569344835, "pct95": 9.037593078613279}
+json_stats: {"train_loss": 6.804361383120219, "val_loss": 0, "epoch": 29, "lr": 0.0003, "best_val_loss": 3.9949751592502394, "mean": 3.9949751592502394, "median": 3.521477699279785, "trimean": 3.5724314749240875, "bst25": 1.0890108594234953, "wst25": 7.7436307569344835, "pct95": 9.037593078613279}
+json_stats: {"train_loss": 6.675251881281535, "val_loss": 4.569422711771002, "epoch": 30, "lr": 0.0003, "best_val_loss": 3.9949751592502394, "mean": 3.9949751592502394, "median": 3.521477699279785, "trimean": 3.5724314749240875, "bst25": 1.0890108594234953, "wst25": 7.7436307569344835, "pct95": 9.037593078613279}
+json_stats: {"train_loss": 6.928436557451884, "val_loss": 0, "epoch": 31, "lr": 0.0003, "best_val_loss": 3.9949751592502394, "mean": 3.9949751592502394, "median": 3.521477699279785, "trimean": 3.5724314749240875, "bst25": 1.0890108594234953, "wst25": 7.7436307569344835, "pct95": 9.037593078613279}
+json_stats: {"train_loss": 5.735400358835856, "val_loss": 0, "epoch": 32, "lr": 0.0003, "best_val_loss": 3.9949751592502394, "mean": 3.9949751592502394, "median": 3.521477699279785, "trimean": 3.5724314749240875, "bst25": 1.0890108594234953, "wst25": 7.7436307569344835, "pct95": 9.037593078613279}
+json_stats: {"train_loss": 6.109984715779622, "val_loss": 0, "epoch": 33, "lr": 0.0003, "best_val_loss": 3.9949751592502394, "mean": 3.9949751592502394, "median": 3.521477699279785, "trimean": 3.5724314749240875, "bst25": 1.0890108594234953, "wst25": 7.7436307569344835, "pct95": 9.037593078613279}
+json_stats: {"train_loss": 5.396636366844177, "val_loss": 0, "epoch": 34, "lr": 0.0003, "best_val_loss": 3.9949751592502394, "mean": 3.9949751592502394, "median": 3.521477699279785, "trimean": 3.5724314749240875, "bst25": 1.0890108594234953, "wst25": 7.7436307569344835, "pct95": 9.037593078613279}
+json_stats: {"train_loss": 5.682904362678528, "val_loss": 3.301126926664322, "epoch": 35, "lr": 0.0003, "best_val_loss": 3.301126926664322, "mean": 3.301126926664322, "median": 2.823690891265869, "trimean": 2.944896876811981, "bst25": 1.1612537997834227, "wst25": 6.25246583422025, "pct95": 7.41299123764038}
+json_stats: {"train_loss": 5.3694645166397095, "val_loss": 0, "epoch": 36, "lr": 0.0003, "best_val_loss": 3.301126926664322, "mean": 3.301126926664322, "median": 2.823690891265869, "trimean": 2.944896876811981, "bst25": 1.1612537997834227, "wst25": 6.25246583422025, "pct95": 7.41299123764038}
+json_stats: {"train_loss": 5.406769156455994, "val_loss": 0, "epoch": 37, "lr": 0.0003, "best_val_loss": 3.301126926664322, "mean": 3.301126926664322, "median": 2.823690891265869, "trimean": 2.944896876811981, "bst25": 1.1612537997834227, "wst25": 6.25246583422025, "pct95": 7.41299123764038}
+json_stats: {"train_loss": 5.0908942222595215, "val_loss": 0, "epoch": 38, "lr": 0.0003, "best_val_loss": 3.301126926664322, "mean": 3.301126926664322, "median": 2.823690891265869, "trimean": 2.944896876811981, "bst25": 1.1612537997834227, "wst25": 6.25246583422025, "pct95": 7.41299123764038}
+json_stats: {"train_loss": 5.0403242111206055, "val_loss": 0, "epoch": 39, "lr": 0.0003, "best_val_loss": 3.301126926664322, "mean": 3.301126926664322, "median": 2.823690891265869, "trimean": 2.944896876811981, "bst25": 1.1612537997834227, "wst25": 6.25246583422025, "pct95": 7.41299123764038}
+json_stats: {"train_loss": 5.279397249221802, "val_loss": 4.237856881959098, "epoch": 40, "lr": 0.0003, "best_val_loss": 3.301126926664322, "mean": 3.301126926664322, "median": 2.823690891265869, "trimean": 2.944896876811981, "bst25": 1.1612537997834227, "wst25": 6.25246583422025, "pct95": 7.41299123764038}
+json_stats: {"train_loss": 5.209520975748698, "val_loss": 0, "epoch": 41, "lr": 0.0003, "best_val_loss": 3.301126926664322, "mean": 3.301126926664322, "median": 2.823690891265869, "trimean": 2.944896876811981, "bst25": 1.1612537997834227, "wst25": 6.25246583422025, "pct95": 7.41299123764038}
+json_stats: {"train_loss": 4.969159642855327, "val_loss": 0, "epoch": 42, "lr": 0.0003, "best_val_loss": 3.301126926664322, "mean": 3.301126926664322, "median": 2.823690891265869, "trimean": 2.944896876811981, "bst25": 1.1612537997834227, "wst25": 6.25246583422025, "pct95": 7.41299123764038}
+json_stats: {"train_loss": 4.958022435506185, "val_loss": 0, "epoch": 43, "lr": 0.0003, "best_val_loss": 3.301126926664322, "mean": 3.301126926664322, "median": 2.823690891265869, "trimean": 2.944896876811981, "bst25": 1.1612537997834227, "wst25": 6.25246583422025, "pct95": 7.41299123764038}
+json_stats: {"train_loss": 4.915363788604736, "val_loss": 0, "epoch": 44, "lr": 0.0003, "best_val_loss": 3.301126926664322, "mean": 3.301126926664322, "median": 2.823690891265869, "trimean": 2.944896876811981, "bst25": 1.1612537997834227, "wst25": 6.25246583422025, "pct95": 7.41299123764038}
+json_stats: {"train_loss": 4.76146936416626, "val_loss": 3.090033138318667, "epoch": 45, "lr": 0.0003, "best_val_loss": 3.090033138318667, "mean": 3.090033138318667, "median": 2.689336061477661, "trimean": 2.7778892815113068, "bst25": 1.092991106370662, "wst25": 5.70390559732914, "pct95": 6.570892429351806}
+json_stats: {"train_loss": 4.680769582589467, "val_loss": 0, "epoch": 46, "lr": 0.0003, "best_val_loss": 3.090033138318667, "mean": 3.090033138318667, "median": 2.689336061477661, "trimean": 2.7778892815113068, "bst25": 1.092991106370662, "wst25": 5.70390559732914, "pct95": 6.570892429351806}
+json_stats: {"train_loss": 5.211615641911824, "val_loss": 0, "epoch": 47, "lr": 0.0003, "best_val_loss": 3.090033138318667, "mean": 3.090033138318667, "median": 2.689336061477661, "trimean": 2.7778892815113068, "bst25": 1.092991106370662, "wst25": 5.70390559732914, "pct95": 6.570892429351806}
+json_stats: {"train_loss": 4.7692045370737715, "val_loss": 0, "epoch": 48, "lr": 0.0003, "best_val_loss": 3.090033138318667, "mean": 3.090033138318667, "median": 2.689336061477661, "trimean": 2.7778892815113068, "bst25": 1.092991106370662, "wst25": 5.70390559732914, "pct95": 6.570892429351806}
+json_stats: {"train_loss": 4.590255161126454, "val_loss": 0, "epoch": 49, "lr": 0.0003, "best_val_loss": 3.090033138318667, "mean": 3.090033138318667, "median": 2.689336061477661, "trimean": 2.7778892815113068, "bst25": 1.092991106370662, "wst25": 5.70390559732914, "pct95": 6.570892429351806}
+json_stats: {"train_loss": 4.764499068260193, "val_loss": 2.629476890914024, "epoch": 50, "lr": 0.0003, "best_val_loss": 2.629476890914024, "mean": 2.629476890914024, "median": 2.2938811779022217, "trimean": 2.3393339812755585, "bst25": 0.8371341580406149, "wst25": 5.114720741907756, "pct95": 6.209055137634276}
+json_stats: {"train_loss": 4.938779294490814, "val_loss": 0, "epoch": 51, "lr": 0.0003, "best_val_loss": 2.629476890914024, "mean": 2.629476890914024, "median": 2.2938811779022217, "trimean": 2.3393339812755585, "bst25": 0.8371341580406149, "wst25": 5.114720741907756, "pct95": 6.209055137634276}
+json_stats: {"train_loss": 4.749245484670003, "val_loss": 0, "epoch": 52, "lr": 0.0003, "best_val_loss": 2.629476890914024, "mean": 2.629476890914024, "median": 2.2938811779022217, "trimean": 2.3393339812755585, "bst25": 0.8371341580406149, "wst25": 5.114720741907756, "pct95": 6.209055137634276}
+json_stats: {"train_loss": 4.648283501466115, "val_loss": 0, "epoch": 53, "lr": 0.0003, "best_val_loss": 2.629476890914024, "mean": 2.629476890914024, "median": 2.2938811779022217, "trimean": 2.3393339812755585, "bst25": 0.8371341580406149, "wst25": 5.114720741907756, "pct95": 6.209055137634276}
+json_stats: {"train_loss": 4.864450494448344, "val_loss": 0, "epoch": 54, "lr": 0.0003, "best_val_loss": 2.629476890914024, "mean": 2.629476890914024, "median": 2.2938811779022217, "trimean": 2.3393339812755585, "bst25": 0.8371341580406149, "wst25": 5.114720741907756, "pct95": 6.209055137634276}
+json_stats: {"train_loss": 4.928560098012288, "val_loss": 4.188778731163848, "epoch": 55, "lr": 0.0003, "best_val_loss": 2.629476890914024, "mean": 2.629476890914024, "median": 2.2938811779022217, "trimean": 2.3393339812755585, "bst25": 0.8371341580406149, "wst25": 5.114720741907756, "pct95": 6.209055137634276}
+json_stats: {"train_loss": 4.805571575959523, "val_loss": 0, "epoch": 56, "lr": 0.0003, "best_val_loss": 2.629476890914024, "mean": 2.629476890914024, "median": 2.2938811779022217, "trimean": 2.3393339812755585, "bst25": 0.8371341580406149, "wst25": 5.114720741907756, "pct95": 6.209055137634276}
+json_stats: {"train_loss": 4.38113530476888, "val_loss": 0, "epoch": 57, "lr": 0.0003, "best_val_loss": 2.629476890914024, "mean": 2.629476890914024, "median": 2.2938811779022217, "trimean": 2.3393339812755585, "bst25": 0.8371341580406149, "wst25": 5.114720741907756, "pct95": 6.209055137634276}
+json_stats: {"train_loss": 4.359890321890513, "val_loss": 0, "epoch": 58, "lr": 0.0003, "best_val_loss": 2.629476890914024, "mean": 2.629476890914024, "median": 2.2938811779022217, "trimean": 2.3393339812755585, "bst25": 0.8371341580406149, "wst25": 5.114720741907756, "pct95": 6.209055137634276}
+json_stats: {"train_loss": 4.644600768884023, "val_loss": 0, "epoch": 59, "lr": 0.0003, "best_val_loss": 2.629476890914024, "mean": 2.629476890914024, "median": 2.2938811779022217, "trimean": 2.3393339812755585, "bst25": 0.8371341580406149, "wst25": 5.114720741907756, "pct95": 6.209055137634276}
+json_stats: {"train_loss": 4.694334169228871, "val_loss": 2.596224323664077, "epoch": 60, "lr": 0.0003, "best_val_loss": 2.596224323664077, "mean": 2.596224323664077, "median": 2.2179675102233887, "trimean": 2.2337526381015778, "bst25": 0.7645709890317409, "wst25": 5.204525753855705, "pct95": 6.690188694000243}
+json_stats: {"train_loss": 4.433545192082723, "val_loss": 0, "epoch": 61, "lr": 0.0003, "best_val_loss": 2.596224323664077, "mean": 2.596224323664077, "median": 2.2179675102233887, "trimean": 2.2337526381015778, "bst25": 0.7645709890317409, "wst25": 5.204525753855705, "pct95": 6.690188694000243}
+json_stats: {"train_loss": 4.660882552464803, "val_loss": 0, "epoch": 62, "lr": 0.0003, "best_val_loss": 2.596224323664077, "mean": 2.596224323664077, "median": 2.2179675102233887, "trimean": 2.2337526381015778, "bst25": 0.7645709890317409, "wst25": 5.204525753855705, "pct95": 6.690188694000243}
+json_stats: {"train_loss": 4.62459663550059, "val_loss": 0, "epoch": 63, "lr": 0.0003, "best_val_loss": 2.596224323664077, "mean": 2.596224323664077, "median": 2.2179675102233887, "trimean": 2.2337526381015778, "bst25": 0.7645709890317409, "wst25": 5.204525753855705, "pct95": 6.690188694000243}
+json_stats: {"train_loss": 4.168105761210124, "val_loss": 0, "epoch": 64, "lr": 0.0003, "best_val_loss": 2.596224323664077, "mean": 2.596224323664077, "median": 2.2179675102233887, "trimean": 2.2337526381015778, "bst25": 0.7645709890317409, "wst25": 5.204525753855705, "pct95": 6.690188694000243}
+json_stats: {"train_loss": 4.201037049293518, "val_loss": 3.1396885278521394, "epoch": 65, "lr": 0.0003, "best_val_loss": 2.596224323664077, "mean": 2.596224323664077, "median": 2.2179675102233887, "trimean": 2.2337526381015778, "bst25": 0.7645709890317409, "wst25": 5.204525753855705, "pct95": 6.690188694000243}
+json_stats: {"train_loss": 4.549538950125377, "val_loss": 0, "epoch": 66, "lr": 0.0003, "best_val_loss": 2.596224323664077, "mean": 2.596224323664077, "median": 2.2179675102233887, "trimean": 2.2337526381015778, "bst25": 0.7645709890317409, "wst25": 5.204525753855705, "pct95": 6.690188694000243}
+json_stats: {"train_loss": 4.796775221824646, "val_loss": 0, "epoch": 67, "lr": 0.0003, "best_val_loss": 2.596224323664077, "mean": 2.596224323664077, "median": 2.2179675102233887, "trimean": 2.2337526381015778, "bst25": 0.7645709890317409, "wst25": 5.204525753855705, "pct95": 6.690188694000243}
+json_stats: {"train_loss": 4.611231327056885, "val_loss": 0, "epoch": 68, "lr": 0.0003, "best_val_loss": 2.596224323664077, "mean": 2.596224323664077, "median": 2.2179675102233887, "trimean": 2.2337526381015778, "bst25": 0.7645709890317409, "wst25": 5.204525753855705, "pct95": 6.690188694000243}
+json_stats: {"train_loss": 4.497842351595561, "val_loss": 0, "epoch": 69, "lr": 0.0003, "best_val_loss": 2.596224323664077, "mean": 2.596224323664077, "median": 2.2179675102233887, "trimean": 2.2337526381015778, "bst25": 0.7645709890317409, "wst25": 5.204525753855705, "pct95": 6.690188694000243}
+json_stats: {"train_loss": 4.696720878283183, "val_loss": 3.017492588432062, "epoch": 70, "lr": 0.0003, "best_val_loss": 2.596224323664077, "mean": 2.596224323664077, "median": 2.2179675102233887, "trimean": 2.2337526381015778, "bst25": 0.7645709890317409, "wst25": 5.204525753855705, "pct95": 6.690188694000243}
+json_stats: {"train_loss": 4.792035102844238, "val_loss": 0, "epoch": 71, "lr": 0.0003, "best_val_loss": 2.596224323664077, "mean": 2.596224323664077, "median": 2.2179675102233887, "trimean": 2.2337526381015778, "bst25": 0.7645709890317409, "wst25": 5.204525753855705, "pct95": 6.690188694000243}
+json_stats: {"train_loss": 4.1357235511144, "val_loss": 0, "epoch": 72, "lr": 0.0003, "best_val_loss": 2.596224323664077, "mean": 2.596224323664077, "median": 2.2179675102233887, "trimean": 2.2337526381015778, "bst25": 0.7645709890317409, "wst25": 5.204525753855705, "pct95": 6.690188694000243}
+json_stats: {"train_loss": 4.438402036825816, "val_loss": 0, "epoch": 73, "lr": 0.0003, "best_val_loss": 2.596224323664077, "mean": 2.596224323664077, "median": 2.2179675102233887, "trimean": 2.2337526381015778, "bst25": 0.7645709890317409, "wst25": 5.204525753855705, "pct95": 6.690188694000243}
+json_stats: {"train_loss": 4.350571612517039, "val_loss": 0, "epoch": 74, "lr": 0.0003, "best_val_loss": 2.596224323664077, "mean": 2.596224323664077, "median": 2.2179675102233887, "trimean": 2.2337526381015778, "bst25": 0.7645709890317409, "wst25": 5.204525753855705, "pct95": 6.690188694000243}
+json_stats: {"train_loss": 4.803896129131317, "val_loss": 2.876971500023963, "epoch": 75, "lr": 0.0003, "best_val_loss": 2.596224323664077, "mean": 2.596224323664077, "median": 2.2179675102233887, "trimean": 2.2337526381015778, "bst25": 0.7645709890317409, "wst25": 5.204525753855705, "pct95": 6.690188694000243}
+json_stats: {"train_loss": 4.736518164475759, "val_loss": 0, "epoch": 76, "lr": 0.0003, "best_val_loss": 2.596224323664077, "mean": 2.596224323664077, "median": 2.2179675102233887, "trimean": 2.2337526381015778, "bst25": 0.7645709890317409, "wst25": 5.204525753855705, "pct95": 6.690188694000243}
+json_stats: {"train_loss": 4.38250998655955, "val_loss": 0, "epoch": 77, "lr": 0.0003, "best_val_loss": 2.596224323664077, "mean": 2.596224323664077, "median": 2.2179675102233887, "trimean": 2.2337526381015778, "bst25": 0.7645709890317409, "wst25": 5.204525753855705, "pct95": 6.690188694000243}

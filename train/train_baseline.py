@@ -1,6 +1,9 @@
 from __future__ import print_function
 import os
 import sys
+aux_path = os.path.abspath('../auxiliary')
+sys.path.append(aux_path)
+
 import argparse
 import random
 import json
@@ -15,7 +18,6 @@ from torchvision import utils as vutils
 from torch.utils.tensorboard import SummaryWriter
 from torch.autograd import Variable
 
-sys.path.append(r"..\auxiliary")
 
 from model_baseline import CreateNet, squeezenet1_1
 from dataset import *
@@ -37,9 +39,9 @@ def save_image_tensor(input_tensor: torch.Tensor, filename):
     vutils.save_image(input_tensor, filename)
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--batch_size', type=int, default=32, help='input batch size')
+parser.add_argument('--batch_size', type=int, default=16, help='input batch size')
 parser.add_argument('--nepoch', type=int, default=4000, help='number of epochs to train for')
-parser.add_argument('--workers', type=int, help='number of data loading workers', default=0)
+parser.add_argument('--workers', type=int, help='number of data loading workers', default=30)
 parser.add_argument('--lrate', type=float, default=0.0003, help='learning rate')
 parser.add_argument('--pth_path', type=str, default='')
 parser.add_argument('--foldnum', type=int, default=0, help='fold number')
