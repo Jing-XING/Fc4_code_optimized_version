@@ -2,17 +2,10 @@
 <project version="4">
   <component name="PublishConfigData" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
-      <paths name="lab-xing.jing@222.201.134.197:22">
+      <paths name="197_Fc4_optimized_version">
         <serverdata>
           <mappings>
             <mapping deploy="/shareData3/lab-xing.jing/project/Fc4_code_optimized_version" local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="lab-xing.jing@222.201.134.197:22 (2)">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
