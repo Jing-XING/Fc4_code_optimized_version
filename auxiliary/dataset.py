@@ -101,34 +101,7 @@ class ColorChecker(data.Dataset):
 
     def __len__(self):
         return(len(self.data_list))
-def size_finetuning(h_w):
-    # check the image_size for the ability that the deconvolution function can output the same image size
-    for i in range(2):
 
-        while True:
-            k = h_w[i]
-            #conv and maxpool
-            k = math.floor((k - 3)/2 + 1)
-            k = math.ceil((k - 3)/2 + 1)
-            k = math.ceil((k - 3) / 2 + 1)
-            k = math.ceil((k - 3) / 2 + 1)
-            #deconv
-            k = (k - 1) * 2 + 3
-            k = (k - 1) * 2 + 3
-            k = (k - 1) * 2 + 3
-            k = (k - 1) * 2 + 4
-
-            if k != h_w[i]:
-                h_w[i] -= 1
-            else:
-                break
-    return h_w
-
-def img_size_finetuning(img):
-    h_w = img.shape[2:]
-    h_w = torch.tensor(h_w)
-    h_w = size_finetuning(h_w)
-    return img[:, :, :h_w[0], :h_w[1]]
 
 
 
