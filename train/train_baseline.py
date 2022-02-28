@@ -37,8 +37,8 @@ def save_image_tensor(input_tensor: torch.Tensor, filename):
     vutils.save_image(input_tensor, filename)
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--batch_size', type=int, default=, help='input batch size')
-parser.add_argument('--nepoch', type=int, default=4000, help='number of epochs to train for')
+parser.add_argument('--batch_size', type=int, default=16, help='input batch size')
+parser.add_argument('--nepoch', type=int, default=6000, help='number of epochs to train for')
 parser.add_argument('--workers', type=int, help='number of data loading workers', default=30)
 parser.add_argument('--lrate', type=float, default=0.0003, help='learning rate')
 parser.add_argument('--pth_path', type=str, default='')
